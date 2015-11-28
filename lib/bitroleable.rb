@@ -34,6 +34,7 @@ module Bitroleable
         end
 
         define_method("#{column}=".to_sym) do |value|
+          return self[column] = 0 if value.blank?
           if roles_options[:multi]
             roles = value.is_a?(Array) ? value : [value]
             self[column] = 0

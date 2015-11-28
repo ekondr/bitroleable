@@ -31,6 +31,18 @@ RSpec.describe Bitroleable, type: :model do
         expect(User.where_role(:moderator).first).to eq user
       end
     end
+
+    context 'when a role is nil' do
+      it 'should have not any roles' do
+        user.role = nil
+
+        expect(user.admin?).to be false
+        expect(user.user?).to be false
+        expect(user.moderator?).to be false
+
+        expect(user.role).to eq nil
+      end
+    end
   end
 
   context 'given a multi role model' do
@@ -68,6 +80,18 @@ RSpec.describe Bitroleable, type: :model do
         expect(Customer.where_role(:user).first).to eq customer
         expect(Customer.where_role(:admin).first).to eq customer
         expect(Customer.where_role(:admin, :user).first).to eq customer
+      end
+    end
+
+    context 'when a role is empty array' do
+      it 'should have not any roles' do
+        customer.role = []
+
+        expect(customer.admin?).to be false
+        expect(customer.user?).to be false
+        expect(customer.moderator?).to be false
+
+        expect(customer.role).to eq []
       end
     end
   end
