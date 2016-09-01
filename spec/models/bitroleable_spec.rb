@@ -16,6 +16,17 @@ RSpec.describe Bitroleable, type: :model do
       expect(User.where_role(:moderator).count).to eq 0
     end
 
+    it 'should have a list of roles' do
+      expect(User.roles_list).to eq [:user, :moderator, :admin]
+    end
+
+    it 'should have ability to check roles' do
+      expect(User.role?(:user)).to eq true
+      expect(User.role?(:moderator)).to eq true
+      expect(User.role?(:admin)).to eq true
+      expect(User.role?(:guest)).to eq false
+    end
+
     context 'when a role is changed' do
       before { user.moderator! }
 

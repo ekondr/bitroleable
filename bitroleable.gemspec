@@ -7,8 +7,8 @@ Gem::Specification.new do |spec|
   spec.version       = Bitroleable::VERSION
   spec.authors       = ['Eugene Kondratiuk']
   spec.email         = ['ekondr@gmail.com']
-  spec.summary       = "Store user's roles in an integer column of database"
-  spec.description   = "Store user's roles in an integer column of database. Have ability to store multi-roles for users."
+  spec.summary       = "Manage user roles. Each user's role is stored as a bit in an integer column of database."
+  spec.description   = "Manage user roles. Each user's role is stored as a bit in an integer column of database. Also provides user ability to have one role and some roles."
   spec.homepage      = ''
   spec.license       = 'MIT'
 

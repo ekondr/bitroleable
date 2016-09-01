@@ -70,6 +70,14 @@ module Bitroleable
         2**index
       end
 
+      define_singleton_method :roles_list do
+        roles_list
+      end
+
+      define_singleton_method :role? do |role|
+        roles_list.include?(role.to_sym)
+      end
+
       define_singleton_method :where_role do |*roles|
         roles = roles.flatten.compact.map(&:to_sym)
         tbl_column = "#{self.table_name}.#{column}"
