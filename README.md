@@ -49,6 +49,7 @@ For now it has only one option:
 user = User.first
 user.admin! # => user becomes an admin
 user.admin? # => true
+user.role?(:admin) # => true
 user.user? # => false
 user.role # => [:admin]
 user.role = [:user, :moderator]

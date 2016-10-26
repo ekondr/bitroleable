@@ -21,7 +21,7 @@ module Bitroleable
 
       roles_list.each do |role|
         define_method("#{role}?".to_sym) do
-          self[column] & self.class.role_value(role) > 0
+          role?(role)
         end
 
         define_method("#{role}!".to_sym) do
@@ -62,6 +62,10 @@ module Bitroleable
             nil
           end
         end
+      end
+
+      define_method(:role?) do |role|
+        self[column] & self.class.role_value(role) > 0
       end
 
       define_singleton_method :role_value do |role|

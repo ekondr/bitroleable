@@ -9,6 +9,10 @@ RSpec.describe Bitroleable, type: :model do
       expect(user.user?).to be false
       expect(user.moderator?).to be false
 
+      expect(user.role?(:admin)).to eq true
+      expect(user.role?(:user)).to eq false
+      expect(user.role?(:moderator)).to eq false
+
       expect(user.role).to eq :admin
 
       expect(User.where_role(:user).count).to eq 0
